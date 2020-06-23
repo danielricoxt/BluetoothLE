@@ -1,0 +1,8 @@
+#!/bin/bash
+#Deshabilitamos el Scan para poder poner los parámetros que nos interesan
+sudo hcitool -i hci0 cmd 0x08 0x000C 00 00
+#Despues ponemos los parámetros: 00 (pasivo= sin paquetes Scan_req),
+#LE_Scan_Interval 0xXXXX, LE_Scan_Window 0xXXXX, ...
+sudo hcitool -i hci0 cmd 0x08 0x000B 00 80 00 40 00 00 00
+#Por último hablitamos el scaning con los parámetros puestos
+sudo hcitool -i hci0 cmd 0x08 0x000C 01 00
